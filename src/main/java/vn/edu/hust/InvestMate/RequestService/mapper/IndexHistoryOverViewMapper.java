@@ -11,7 +11,7 @@ public class IndexHistoryOverViewMapper {
 	public IndexHistoryOverviewDTO toDTO(List<IndexHistoryEntity> historyEntityList, IndexHistoryEntity before) {
 		var dto = new IndexHistoryOverviewDTO();
 		var lastEntity = historyEntityList.get(historyEntityList.size() - 1);
-		dto.setName(lastEntity.getIndexEntity().getComGroupName());
+		dto.setName(lastEntity.getIndexEntity().getComGroupCode());
 		dto.setPrice(lastEntity.getClose());
 		long volume = 0;
 		for (var e : historyEntityList) {

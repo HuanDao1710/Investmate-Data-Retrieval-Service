@@ -9,24 +9,29 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StockFilterDTO {
-	private Integer eps;
+	private String industry;
+	private String exchange;
+	private int eps;
 	private Double epsGrowth1Year;
 	private Double lastQuarterProfitGrowth;
 	private Double roe;
-	private Double priceNearRealtime;
-//	private Double beta;
 	private Double grossMargin;
-//	private Double netMargin;
-	private Double doe;
-	private Double pe;
-	private Double pb;
-	private Double evEbitda;
+	private Double doe; // lastquarter
+	private Double pe; // lastquarter
+	private Double pb; // lastquarter
+	private Double asset; // lastquarter
+	private Double evEbitda; // lastquarter
+	private Double postTaxProfitYear;
+	private Double postTaxProfitQuarter;
+	private Double epsTtm; //
+	private Double lastQuarterTradingValue;
+	private Double revenueLastQuarterGrowth;
+	private Double revenueGrowthLastYear;//
+	private Double revenueTtm; //
+	private Double revenueLastYear; //
+	private Double lastYearPostTaxProfit; //
+	private Double lastYearCashFlowFromFinancial;
+	private Double lastYearCashFlowFromSale;
+	private Double lastYearFreeCashFlow;
 	private String code;
-	private Double percentChangeDay;
-	private Double percentChangeWeek;
-	private Double percentChangeMonth;
-	private Double marketCap;
-	private Double avgTradingValue20Day;
-	private Double asset;
-	private double smg;
 }

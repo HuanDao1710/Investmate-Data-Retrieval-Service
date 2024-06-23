@@ -11,16 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.hust.InvestMate.RequestService.constant.SortType;
-import vn.edu.hust.InvestMate.RequestService.domain.dto.CompanyOverviewDTO;
-import vn.edu.hust.InvestMate.RequestService.domain.dto.FinancialRatioDTO;
 import vn.edu.hust.InvestMate.RequestService.domain.dto.IndustryDTO;
 import vn.edu.hust.InvestMate.RequestService.domain.dto.TemporaryDTO;
-import vn.edu.hust.InvestMate.RequestService.service.IStockDetailService;
 import vn.edu.hust.InvestMate.RequestService.service.IStockListService;
 import vn.edu.hust.InvestMate.RequestService.utils.CommonUtils;
-
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,14 +26,15 @@ public class StockListController {
 
 	@GetMapping("/list_industry")
 	List<IndustryDTO> getListIndustry(){
-		String key = "ListIndustry";
-		List<IndustryDTO> results = redisTemplate.opsForList().range(key, 0, - 1);
-		if(results == null || results.isEmpty()) {
-			var re = stockListService.getListIndustry();
-			redisTemplate.opsForList().rightPushAll(key, re);
-			return re;
-		}
-		return  results;
+//		String key = "ListIndustry";
+//		List<IndustryDTO> results = redisTemplate.opsForList().range(key, 0, - 1);
+//		if(results == null || results.isEmpty()) {
+//			var re = stockListService.getListIndustry();
+//			redisTemplate.opsForList().rightPushAll(key, re);
+//			return re;
+//		}
+//		return  results;
+		return stockListService.getListIndustry();
 	}
 
 //	@Cacheable(value = "ListStock", key = "#industry + #sortBy + #page + #size")

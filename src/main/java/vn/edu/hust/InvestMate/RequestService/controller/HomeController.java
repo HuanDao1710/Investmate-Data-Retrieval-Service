@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.hust.InvestMate.RequestService.constant.IndexBody;
 import vn.edu.hust.InvestMate.RequestService.domain.dto.IndexHistoryOverviewDTO;
 import vn.edu.hust.InvestMate.RequestService.domain.dto.SearchDTO;
 import vn.edu.hust.InvestMate.RequestService.domain.dto.TemporaryDTO;
@@ -31,28 +29,31 @@ public class HomeController {
 	}
 
 
-	@GetMapping("/index")
-	public List<IndexHistoryOverviewDTO> indexOverView() {
-		String key = "KeyIndexOverView";
-		List<IndexHistoryOverviewDTO> results = redisTemplate.opsForList().range(key, 0, -1);
-		if(results == null || results.isEmpty()) {
-			var re = List.of(homeService.getOverViewIndex("VNINDEX"), homeService.getOverViewIndex("VN30"));
-			redisTemplate.opsForList().rightPushAll(key, re);
-			return re;
-		}
-		return results;
+	@PostMapping("/index")
+	public List<IndexHistoryOverviewDTO> indexOverView(@RequestBody IndexBody indexes) {
+//		String key = "KeyIndexOverView";
+//		List<IndexHistoryOverviewDTO> results = redisTemplate.opsForList().range(key, 0, -1);
+//		if(results == null || results.isEmpty()) {
+//			var re = List.of(homeService.getOverViewIndex("VNINDEX"), homeService.getOverViewIndex("VN30"));
+//			redisTemplate.opsForList().rightPushAll(key, re);
+//			return re;
+//		}
+//		return results;
+		return indexes.getIndexes().stream().map(homeService::getOverViewIndex).toList();
+//		return List.of(homeService.getOverViewIndex("VNINDEX"), homeService.getOverViewIndex("VN30"));
 	}
 
 	@GetMapping("/top_smg")
 	public List<TemporaryDTO> getTopTemporary() {
-		String key = "SKeyTopSMG";
-		List<TemporaryDTO> results = redisTemplate.opsForList().range(key, 0, - 1);
-		if(results == null || results.isEmpty()) {
-			var re = homeService.getTop10Temporary();
-			redisTemplate.opsForList().rightPushAll(key, re);
-			return re;
-		}
-		return results;
+//		String key = "SKeyTopSMG";
+//		List<TemporaryDTO> results = redisTemplate.opsForList().range(key, 0, - 1);
+//		if(results == null || results.isEmpty()) {
+//			var re = homeService.getTop10Temporary();
+//			redisTemplate.opsForList().rightPushAll(key, re);
+//			return re;
+//		}
+//		return results;
+		return homeService.getTop10Temporary();
 	}
 
 	@GetMapping("/get_stock")

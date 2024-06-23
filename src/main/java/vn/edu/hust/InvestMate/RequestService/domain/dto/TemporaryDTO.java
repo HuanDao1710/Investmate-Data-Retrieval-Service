@@ -25,4 +25,9 @@ public class TemporaryDTO implements Serializable {
 	private String code;
 	private String shortName;
 	private String fullName;
+	private Double marketCap;
+	private Double avgTradingValue20Day;
+	private Double volume;
+	private Double dailyTradingValue;
+
 }

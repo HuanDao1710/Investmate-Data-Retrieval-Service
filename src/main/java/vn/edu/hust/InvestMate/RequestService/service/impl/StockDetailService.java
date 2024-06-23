@@ -47,7 +47,6 @@ public class StockDetailService implements IStockDetailService {
 	@Override
 	public List<LargeShareHolderDTO> getListLargeShareHolder(String code) {
 		CompanyEntity companyEntity = companyRepository.findOneByCode(code);
-
 		return largeShareHolderRepository
 				.findAllByCompanyEntity(companyEntity).stream()
 				.map(e -> largeShareHolderMapper.toDTO(e, companyEntity))

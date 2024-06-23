@@ -25,6 +25,10 @@ public class TemporaryMapper {
 		temp.setCode(entity.getCompanyEntity().getCode());
 		temp.setExchange(entity.getCompanyEntity().getExchange());
 		temp.setShortName(entity.getCompanyEntity().getFullNameVi());
+		temp.setMarketCap(entity.getMarketCap());
+		temp.setAvgTradingValue20Day(entity.getAvgTradingValue20Day());
+		temp.setVolume(entity.getVolume());
+		temp.setDailyTradingValue(entity.getDailyTradingValue());
 		return temp;
 	}
 }

@@ -38,7 +38,6 @@ public interface MinMaxValues {
 	Double getMin_asset();
 
 	Double getMax_ev_ebitda();
-
 	Double getMin_ev_ebitda();
 	Double getMax_percent_change_day();
 	Double getMin_percent_change_day();
@@ -54,4 +53,45 @@ public interface MinMaxValues {
 	Double getMax_smg();
 	Double getMax_price();
 	Double getMin_price();
+	Double getMax_post_tax_profit_year();
+	Double getMin_post_tax_profit_year();
+
+	Double getMax_post_tax_profit_quarter();
+	Double getMin_post_tax_profit_quarter();
+
+	Double getMax_eps_ttm();
+	Double getMin_eps_ttm();
+
+	Double getMax_last_quarter_trading_value();
+	Double getMin_last_quarter_trading_value();
+
+	Double getMax_revenue_last_quarter_growth();
+	Double getMin_revenue_last_quarter_growth();
+
+	Double getMax_revenue_growth_last_year();
+	Double getMin_revenue_growth_last_year();
+
+	Double getMax_revenue_ttm();
+	Double getMin_revenue_ttm();
+
+	Double getMax_revenue_last_year();
+	Double getMin_revenue_last_year();
+
+	Double getMax_last_year_post_tax_profit();
+	Double getMin_last_year_post_tax_profit();
+
+	Double getMax_last_year_cash_flow_from_financial();
+	Double getMin_last_year_cash_flow_from_financial();
+
+	Double getMax_last_year_cash_flow_from_sale();
+	Double getMin_last_year_cash_flow_from_sale();
+
+	Double getMax_last_year_free_cash_flow();
+	Double getMin_last_year_free_cash_flow();
+
+	Double getMax_volume();
+	Double getMin_volume();
+
+	Double getMax_daily_trading_value();
+	Double getMin_daily_trading_value();
 }
