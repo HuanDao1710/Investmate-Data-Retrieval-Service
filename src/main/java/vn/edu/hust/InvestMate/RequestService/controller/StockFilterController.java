@@ -18,7 +18,7 @@ import java.util.Objects;
 public class StockFilterController {
 	private final IStockFilterService stockFilterService;
 	@PostMapping("/filter")
-	public List<FilterDTO> getTopTemporary(@RequestBody FilterBody body) {
+	public List<FilterDTO> filter(@RequestBody FilterBody body) {
 		String exchange = body.getExchange();
 		String industry = body.getIndustry();
 		var conditions = body.getConditions();
