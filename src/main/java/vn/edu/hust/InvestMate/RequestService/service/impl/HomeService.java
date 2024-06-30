@@ -38,7 +38,7 @@ public class HomeService implements IHomeService {
 		IndexEntity entity = indexRepository.findOneByComGroupCode(code);
 		if(entity == null) throw new TransactionException("No data");
 		List<IndexHistoryEntity> results  =
-				indexHistoryRepository.findByIndexEntityAndTimeBetween(entity, TimeUtils.getStartOfDay(time), TimeUtils.getEndOfDay(time));
+				indexHistoryRepository.findByIndexEntityAndTimeBetweenOrderByTimeAsc(entity, TimeUtils.getStartOfDay(time), TimeUtils.getEndOfDay(time));
 		var lastEntityDayBefore = indexHistoryRepository.findLatestBeforeTime(entity.getComGroupCode(), results.get(0).getTime());
 		return indexHistoryOverViewMapper.toDTO(results, lastEntityDayBefore);
 	}

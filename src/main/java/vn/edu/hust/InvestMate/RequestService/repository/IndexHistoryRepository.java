@@ -15,7 +15,7 @@ public interface IndexHistoryRepository extends JpaRepository<IndexHistoryEntity
 			"FROM IndexHistoryEntity ih " +
 			"WHERE ih.indexEntity.comGroupCode = :comGroupCode")
 	Long findMaxTimeByCode(@Param("comGroupCode") String code);
-	List<IndexHistoryEntity> findByIndexEntityAndTimeBetween(IndexEntity indexEntity, long from, long to);
+	List<IndexHistoryEntity> findByIndexEntityAndTimeBetweenOrderByTimeAsc(IndexEntity indexEntity, long from, long to);
 
 	@Query("SELECT ih FROM IndexHistoryEntity ih " +
 			"WHERE ih.indexEntity.comGroupCode = :comGroupCode AND ih.time < :to " +

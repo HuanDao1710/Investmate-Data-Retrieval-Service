@@ -17,6 +17,6 @@ public class IndexHistoryService implements IIndexHistoryService {
 	@Override
 	public List<IndexHistoryEntity> getHistoryBetween(String code) {
 		var IndexEntity = indexRepository.findOneByComGroupCode(code);
-		return indexHistoryRepository.findByIndexEntityAndTimeBetween(IndexEntity, TimeUtils.getStartOfDay(), TimeUtils.getEndOfDay());
+		return indexHistoryRepository.findByIndexEntityAndTimeBetweenOrderByTimeAsc(IndexEntity, TimeUtils.getStartOfDay(), TimeUtils.getEndOfDay());
 	}
 }
